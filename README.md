@@ -6,4 +6,69 @@
 <img width="515" height="910" alt="WEB_HOMEPAGENOTEVOICEADDED" src="https://github.com/user-attachments/assets/6f76cde0-cccd-4488-8b9d-402edcc5b49f" />
 <img width="512" height="912" alt="WEB_HOMEPAGENOTEVOICE" src="https://github.com/user-attachments/assets/714a1fae-6200-4db5-8760-28137feb26e7" />
 <img width="515" height="913" alt="WEB_HOMEPAGENOTE" src="https://github.com/user-attachments/assets/799c4852-27c9-40a8-a634-4da2a5747585" />
-<img width="513" height="911" alt="WEB_HOMEPAGE" src="https://github.com/user-attachments/assets/20fa2ae4-0f23-4b9b-b342-b68141e4251a" />
+
+
+# 📝 Flutter Note App
+Aplikasi catatan sederhana yang memiliki fitur text note, voice note, notifikasi, dan tampilan yang bersih.
+
+---
+
+## 📌 Fitur Utama
+- ✏️ Menambah & mengedit catatan (Text Note)
+- 🎤 Merekam voice note
+- 🔔 Notifikasi pengingat
+- 📁 Penyimpanan lokal
+- 📱 SplashScreen, Login, Register
+- 📄 Halaman About
+
+---
+
+# 📷 Screenshot Aplikasi
+
+## 🏠 **Halaman Home**
+WEB_HOMEPAGE  
+![Home Page](<img width="513" height="911" alt="WEB_HOMEPAGE" src="https://github.com/user-attachments/assets/20fa2ae4-0f23-4b9b-b342-b68141e4251a" />)
+
+---
+
+## ➕ **Tambah Catatan (Text Note)**
+WEB_ADDNOTE  
+![Add Note](WEB_ADDNOTE.png)
+
+---
+
+## 🔊 **Voice Note**
+NOTEVOICE  
+![Voice Note](NOTEVOICE.png)
+
+### Setelah voice note berhasil ditambahkan
+NOTEVOICEADDED  
+![Voice Added](NOTEVOICEADDED.png)
+
+---
+
+## 📝 **Detail Catatan**
+NOTE  
+![Note](NOTE.png)
+
+---
+
+## 🔔 **Notifikasi**
+WEB_NOTIF  
+![Notification](WEB_NOTIF.png)
+
+---
+
+## 🔐 **Permission Record**
+WEB_PERMISSION  
+![Permission](WEB_PERMISSION.png)
+
+---
+
+## ℹ️ **About Page**
+WEB_ABOUT  
+![About](WEB_ABOUT.png)
+
+---
+
+# 📂 Struktur Folder
