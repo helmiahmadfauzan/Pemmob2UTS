@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:voice_note_kit/voice_note_kit.dart';
 import '../services/notes_service.dart';
 import 'add_note_page.dart';
 import 'about_page.dart';
@@ -11,7 +12,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<String> notes = [];
+  List<Map<String, dynamic>> notes = [];
 
   @override
   void initState() {
@@ -42,14 +43,30 @@ class _HomePageState extends State<HomePage> {
 
     if (newText != null) {
       if (index != null) {
-        notes[index] = newText;
+        notes[index] = {
+          "type": "text",
+          "content": newText,
+        };
       } else {
-        notes.add(newText);
+        notes.add({
+          "type": "text",
+          "content": newText,
+        });
       }
 
       await NotesService.saveNotes(notes);
       setState(() {});
     }
+  }
+
+  void addAudioNote(String path) async {
+    notes.add({
+      "type": "audio",
+      "path": path,
+    });
+
+    await NotesService.saveNotes(notes);
+    setState(() {});
   }
 
   @override
@@ -69,14 +86,40 @@ class _HomePageState extends State<HomePage> {
           )
         ],
       ),
+
+      // ===================== BODY =====================
       body: notes.isEmpty
           ? const Center(child: Text("Belum ada catatan"))
           : ListView.builder(
               itemCount: notes.length,
               itemBuilder: (c, i) {
+                final item = notes[i];
+
+                if (item["type"] == "text") {
+                  return ListTile(
+                    title: Text(item["content"]),
+                    onTap: () => openAddNote(
+                      initialText: item["content"],
+                      index: i,
+                    ),
+                    trailing: IconButton(
+                      icon: const Icon(Icons.delete, color: Colors.red),
+                      onPressed: () => deleteNote(i),
+                    ),
+                  );
+                }
+
+                // ===== AUDIO NOTE =====
                 return ListTile(
-                  title: Text(notes[i]),
-                  onTap: () => openAddNote(initialText: notes[i], index: i),
+                  title: const Text("Catatan Suara"),
+                  subtitle: AudioPlayerWidget(
+                    autoPlay: false,
+                    autoLoad: true,
+                    audioPath: item["path"],
+                    audioType: AudioType.directFile,
+                    playerStyle: PlayerStyle.style5,
+                    size: 60,
+                  ),
                   trailing: IconButton(
                     icon: const Icon(Icons.delete, color: Colors.red),
                     onPressed: () => deleteNote(i),
@@ -84,9 +127,53 @@ class _HomePageState extends State<HomePage> {
                 );
               },
             ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => openAddNote(),
-        child: const Icon(Icons.add),
+
+      // ===================== FAB =====================
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          // ADD TEXT NOTE
+          FloatingActionButton(
+            heroTag: "text",
+            child: const Icon(Icons.note_add),
+            onPressed: () => openAddNote(),
+          ),
+          const SizedBox(height: 12),
+
+          // RECORD AUDIO NOTE
+          FloatingActionButton(
+            heroTag: "audio",
+            backgroundColor: Colors.red,
+            child: const Icon(Icons.mic),
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (_) => AlertDialog(
+                  title: const Text("Rekam Catatan Suara"),
+                  content: VoiceRecorderWidget(
+                    iconSize: 80,
+                    showTimerText: true,
+
+                    onRecorded: (file) {
+                      Navigator.pop(context);
+                      addAudioNote(file.path);
+                    },
+
+                    onError: (err) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text("Error: $err")),
+                      );
+                    },
+
+                    actionWhenCancel: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                ),
+              );
+            },
+          ),
+        ],
       ),
     );
   }
