@@ -1,13 +1,3 @@
-<img width="513" height="913" alt="WEB_ADDNOTE" src="https://github.com/user-attachments/assets/8edd8d6b-aec7-4e1b-bf0c-04d062190ce9" />
-<img width="512" height="911" alt="WEB_ABOUT" src="https://github.com/user-attachments/assets/2bf0b05c-0f63-481b-9a38-9b9a51bec960" />
-
-<img width="513" height="915" alt="WEB_PERMISSION" src="https://github.com/user-attachments/assets/dfeb0e4f-c0fb-49f3-b0ff-192f572672ed" />
-<img width="507" height="242" alt="WEB_NOTIF" src="https://github.com/user-attachments/assets/e3f81058-00b0-4a9d-83e9-a7965b8b5c2c" />
-<img width="515" height="910" alt="WEB_HOMEPAGENOTEVOICEADDED" src="https://github.com/user-attachments/assets/6f76cde0-cccd-4488-8b9d-402edcc5b49f" />
-<img width="512" height="912" alt="WEB_HOMEPAGENOTEVOICE" src="https://github.com/user-attachments/assets/714a1fae-6200-4db5-8760-28137feb26e7" />
-<img width="515" height="913" alt="WEB_HOMEPAGENOTE" src="https://github.com/user-attachments/assets/799c4852-27c9-40a8-a634-4da2a5747585" />
-
-
 # 📝 Flutter Note App
 Aplikasi catatan sederhana yang memiliki fitur text note, voice note, notifikasi, dan tampilan yang bersih.
 
@@ -71,5 +61,5 @@ WEB_ABOUT
 
 ---
 
-# 📂 Struktur Folder
+
 
